@@ -7,10 +7,8 @@ import { WebGPURenderer } from "three/webgpu";
 import { useState } from "react";
 
 export default function App() {
-    const [frameloop, setFrameloop] = useState("never");
-    
     return <>
-        <LevaWrapper />
+        <LevaWrapper initialHidden={true} />
 
         <Canvas
             shadows
