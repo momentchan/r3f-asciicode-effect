@@ -18,7 +18,7 @@ import {
 } from "three/tsl";
 import { MeshBasicNodeMaterial } from "three/webgpu";
 
-export function getMaterial({ tex, asciiTexture, length }) {
+export function getMaterial({ tex, asciiTexture, sceneTexture, length }) {
   if (!tex) return null;
 
   const material = new THREE.NodeMaterial();
@@ -32,7 +32,7 @@ export function getMaterial({ tex, asciiTexture, length }) {
   const uColor5 = uniform(color(pallete[4]));
 
   const asciiCode = Fn(() => {
-    const textureColor = texture(tex, attribute("aPixelUV"));
+    const textureColor = texture(sceneTexture, attribute("aPixelUV"));
     const brightness = pow(textureColor.r, 0.9).add(attribute("aRandom").mul(0.02));
 
     const asciiUv = vec2(

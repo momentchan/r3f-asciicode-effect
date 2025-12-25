@@ -3,7 +3,8 @@ import { useControls } from "leva";
 import * as THREE from "three";
 import { getMaterial } from "../utils/getMaterial";
 import { useTexture } from "@react-three/drei";
-import { useEffect } from "react";
+import { useThree, useFrame } from "@react-three/fiber";
+import { useScene2 } from "../hooks/useScene2";
 
 const rows = 50;
 const cols = 50;
@@ -40,8 +41,10 @@ function createAsciiTexture() {
   asciiTexture.needsUpdate = true;
   return { length, asciiTexture };
 }
-
 export default function BasicMesh() {
+  const { scene, camera, gl } = useThree();
+  const { scene2, camera2, renderTarget, animateCubes } = useScene2();
+
   const instancedMeshRef = useRef(null);
 
   const { alpha } = useControls("Material", {
@@ -55,6 +58,7 @@ export default function BasicMesh() {
     return getMaterial({
       tex: tex,
       asciiTexture: createAsciiTexture().asciiTexture,
+      sceneTexture: renderTarget.texture,
       length: createAsciiTexture().length,
     });
   }, [tex]);
@@ -112,6 +116,16 @@ export default function BasicMesh() {
       );
     }
   }, [matrices, uvs, randoms]);
+
+
+  useFrame((state, delta) => {
+    animateCubes(state.clock.elapsedTime, delta);
+    
+    gl.setRenderTarget(renderTarget);
+    gl.render(scene2, camera2);
+    gl.setRenderTarget(null);
+    gl.render(scene, camera);
+  }, 1);
 
   if (!material) return null;
 
