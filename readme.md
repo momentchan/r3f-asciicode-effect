@@ -1,16 +1,34 @@
-## Notes
+# ASCII Shader Effect with WebGPU
 
-``` bash
-# Install dependencies (only the first time)
-npm install
+A React Three Fiber (R3F) implementation of an ASCII shader effect using WebGPU and Three.js.
 
-# Run the local server at localhost:8080
-npm run dev
+## About
 
-# Build for production in the dist/ directory
-npm run build
-```
+This project is a React Three Fiber port of the ASCII shader tutorial by [Yuri Artiukh](https://www.youtube.com/watch?v=NxeRcnLr0ko). It demonstrates how to create an ASCII art effect using WebGPU and Three.js Shading Language (TSL).
 
-<img src='Screenshot.png' width="480px">
+This is a personal practice project for learning WebGPU and TSL (Three.js Shading Language).
 
-[**Live Demo**](https://nodejs.org/en/download/).
+## Features
+
+- ASCII shader effect using WebGPU
+- Real-time texture processing (scene texture or uploaded images)
+- Barrel distortion control
+- Interactive controls via Leva
+- Texture upload support
+- Customizable ASCII character rendering with gradient colors
+
+## Tech Stack
+
+- React Three Fiber
+- Three.js (WebGPU renderer)
+- Three.js Shading Language (TSL)
+- Leva (for UI controls)
+
+## Original Tutorial
+
+Based on the tutorial by Yuri Artiukh:
+- [YouTube Tutorial](https://www.youtube.com/watch?v=NxeRcnLr0ko)
+
+## License
+
+Personal practice project for educational purposes.
