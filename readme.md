@@ -2,6 +2,8 @@
 
 A React Three Fiber (R3F) implementation of an ASCII shader effect using WebGPU and Three.js.
 
+**Live Demo:** [https://r3f-asciicode-effect.pages.dev/](https://r3f-asciicode-effect.pages.dev/)
+
 <img width="508" height="512" alt="image" src="https://github.com/user-attachments/assets/53359eea-be6e-4d59-b6e9-9bc73ef32941" />
 
 ## About
