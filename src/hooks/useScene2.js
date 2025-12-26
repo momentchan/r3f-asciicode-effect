@@ -8,7 +8,6 @@ const random = (min, max) => {
 export function useScene2() {
   const meshesRef = useRef([]);
   const lightsRef = useRef([]);
-  const initializedRef = useRef(false);
 
   const scene2 = useMemo(() => {
     return new THREE.Scene();
@@ -30,9 +29,6 @@ export function useScene2() {
   }, []);
 
   useEffect(() => {
-    // Prevent double initialization (React StrictMode)
-    if (initializedRef.current) return;
-    initializedRef.current = true;
 
     // Add lights
     const light = new THREE.AmbientLight(0xffffff, 0.05);
@@ -82,8 +78,6 @@ export function useScene2() {
         if (light.dispose) light.dispose();
       });
       lightsRef.current = [];
-
-      initializedRef.current = false;
     };
   }, [scene2]);
 
