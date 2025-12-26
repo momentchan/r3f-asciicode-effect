@@ -21,7 +21,7 @@ export default function AsciicodeEffect() {
   const instancedMeshRef = useRef(null);
   const [uploadedTexture, setUploadedTexture] = useState(null);
 
-  const defaultTex = useTexture("/textures/Anne_Hathaway.jpg");
+  const defaultTex = useTexture("/textures/warhol_marilyn.webp");
 
   const handleFileUpload = useCallback((file) => {
     if (!file) return;
@@ -46,14 +46,10 @@ export default function AsciicodeEffect() {
   }, []);
 
   const { useSceneTexture, barrelDistortion } = useControls({
-    useSceneTexture: {
-      value: true,
-      label: "Use Scene Texture",
-    },
     barrelDistortion: {
       value: 0,
-      min: -0.1,
-      max: 0.1,
+      min: -0.05,
+      max: 0.05,
       step: 0.01,
       label: "Barrel Distortion",
     },
@@ -67,6 +63,10 @@ export default function AsciicodeEffect() {
       };
       input.click();
     }),
+    useSceneTexture: {
+      value: false,
+      label: "Use Scene Texture",
+    },
   });
 
   const tex = uploadedTexture || defaultTex;

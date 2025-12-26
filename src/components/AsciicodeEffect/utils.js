@@ -20,7 +20,7 @@ export function createAsciiTexture() {
 
   for (let i = 0; i < length; i++) {
     if (i > 50) {
-      for (let j = 0; j < 6; j++) {
+      for (let j = 0; j < 2; j++) {
         ctx.filter = `blur(${j * 2}px)`;
         ctx.fillText(ASCII_DICT[i], 32 + i * 64, 45);
       }
